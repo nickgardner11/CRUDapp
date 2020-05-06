@@ -1,0 +1,43 @@
+
+
+<%- include('partials/header') %>
+<div class="container">
+<% if (add || post) %>
+    <form method="post" action="/<%=add ? 'add' : `edit/${post.id}`%>">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="title"> Title</label>
+                <input type="text" class="form-control" name="title" value="<%=add ? '' : post.title%>" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="author">Last Name</label>
+                <input type="text" class="form-control" name="author" value="<%=add ? '' : post.author%>" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="date">date</label>
+                <input type="number" class="form-control" name="date" value="<%=add ? '' : post.date%>" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="topic">Topic</label>
+                <select name="topic" class="form-control" required>
+                <% if (!add) { %>
+                    <option selected><%= post.topic %></option>
+                <% } %>
+                <option>Cedar Point</option>
+                <option>Kings Island</option>
+                <option>Geauga Lake /WWK/ SFO</option>
+                <option>Euclid Beach</option>
+                <option>Puritas Springs Park</option>
+                <option>Other</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success float-right"><%= add ? 'Add' : 'Update' %> Post</button>
+    </form>
+
+</div>
+</div>
+</body>
+</html>
